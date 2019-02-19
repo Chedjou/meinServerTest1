@@ -7,7 +7,14 @@ app.get('/', function(req, res){
   res.send("hallo! Es ist nur ein test")
 })
 
-app.listen(3003, function(){
+var http=require('http');
 
-  console.log ("server aktiv")
-})
+var server=http.createServer(function(req,res){
+    res.end('test');
+});
+
+server.on('listening',function(){
+    console.log('ok, server is running');
+});
+
+server.listen(80);
